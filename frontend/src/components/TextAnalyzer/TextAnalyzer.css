@@ -1,0 +1,173 @@
+ .error-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .spelling-icon {
+    background-color: red;
+  }
+  
+  .grammar-icon {
+    background-color: orange;
+  }
+  
+  .punctuation-icon {
+    background-color: yellow;
+  }
+  
+  .suggestion-icon {
+    background-color: green;
+  }
+  
+
+   .container {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: rgb(188, 233, 248);
+    padding: 20px;
+}
+
+.prompt {
+    background-color: grey;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.logo {
+    width: 200px;
+    background-color: rgb(188, 233, 248);
+}
+
+.form-group {
+    margin: 20px 0;
+}
+
+.essay-input {
+    width: 100%;
+    height: 240px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.word-count {
+    margin: 10px 0;
+}
+
+.suggestions {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.suggestion {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.suggestion.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.suggestion.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.suggestion.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.refresh-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.refresh-button:hover {
+    background-color: #0056b3;
+}
+
+.analysis-results pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.analysis-results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+}
+
+.analysis-results h2, .analysis-results h3, .analysis-results h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.analysis-results ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.analysis-results p {
+    margin-bottom: 10px;
+}
+
+.error-section {
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.error-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.error-icon {
+    margin-right: 10px;
+}
+
+.error-title {
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.error-list {
+    list-style-type: disc;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+.error-item {
+    margin-bottom: 5px;
+}
+
+.correction, .suggestion, .position {
+    display: block;
+    margin-left: 20px;
+    font-style: italic;
+    color: #555;
+}
