@@ -32,6 +32,7 @@ const ErrorSection = ({ title, count, errors, icon }) => {
 function TextAnalyzer() {
   const [prompt, setPrompt] = useState('');
   const [essayText, setEssayText] = useState('');
+  const [wordCountLimit, setWordCountLimit] = useState(0);
   const [analysis, setAnalysis] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [analysisKey, setAnalysisKey] = useState(0);
@@ -39,6 +40,11 @@ function TextAnalyzer() {
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
+    const wordCount = essayText.trim().split(/\s+/).length;
+    if (wordCount > wordCountLimit) {
+      alert(`The essay exceeds the word count limit of ${wordCountLimit} words.`);
+      return;
+    }
     setIsLoading(true);
     try {
       const response = await axios.post('http://localhost:5000/analyze', { 
@@ -56,7 +62,7 @@ function TextAnalyzer() {
     } finally {
       setIsLoading(false);
     }
-  }, [prompt, essayText, prompts]);
+  }, [prompt, essayText, prompts, wordCountLimit]);
 
   const renderAnalysis = useCallback(() => {
     if (!analysis) return null;
@@ -105,20 +111,32 @@ function TextAnalyzer() {
         <img src="logo.png" alt="Next Level Tutors" className="logo" />
       </header>
       <form onSubmit={handleSubmit}>
-        <div>
-          <input 
-            id="essay-prompt" 
-            className="prompt" 
-            list="prompt-options"
-            placeholder="Enter Essay Prompt"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-          />
-          <datalist id="prompt-options">
-            {prompts.map((promptOption, index) => (
-              <option key={index} value={promptOption} />
-            ))}
-          </datalist>
+        <div className="form-group-inline">
+          <div className="form-group-item prompt-item">
+            <input 
+              id="essay-prompt" 
+              className="prompt" 
+              list="prompt-options"
+              placeholder="Enter Essay Prompt"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+            />
+            <datalist id="prompt-options">
+              {prompts.map((promptOption, index) => (
+                <option key={index} value={promptOption} />
+              ))}
+            </datalist>
+          </div>
+          <div className="form-group-item word-count-item">
+            <input 
+              id="word-count-limit" 
+              className="word-count-input" 
+              type="number" 
+              placeholder="Word Count Limit"
+              value={wordCountLimit}
+              onChange={(e) => setWordCountLimit(Number(e.target.value))}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="essay-text">Enter Essay Text</label>
@@ -143,3 +161,4 @@ function TextAnalyzer() {
 }
 
 export default TextAnalyzer;
+
